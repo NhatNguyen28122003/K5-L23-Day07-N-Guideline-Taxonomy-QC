@@ -1,16 +1,35 @@
-# Thông tin nhóm
+# Thông tin nhóm — bàn giao HOLD
 
-- Tên nhóm:
-- Mã thành viên (ba chữ số):
-- Người điều phối:
-- Người review bản cuối:
-- Commit chốt bài (điền ở kênh nộp sau khi commit):
+- Tên nhóm: N (ký hiệu theo repository; tên chính thức chưa xác nhận).
+- Mã thành viên (ba chữ số): 066, 263, 273, 277, 291.
+- Người điều phối / đầu mối tổng hợp hồ sơ hiện tại: 291. Không suy diễn vai trò điều phối ở các pha trước.
+- Người review bản cuối: Chưa có reviewer được xác nhận.
+- Commit chốt bài: Điền sau khi hoàn tất nộp qua kênh lớp.
 
-## Kết quả tóm tắt (điền cuối bài)
+## Kết quả tóm tắt
 
-- Lượt gán hoàn tất / được giao:
-- IAA trước calibration (kèm mẫu số):
-- Số ảnh phải calibration: … / 40
-- Vòng QC và số ảnh đã duyệt / cả lô:
-- Tỉ lệ lỗi: … % theo ảnh (…/…), … % theo đối tượng (…/…)
-- **Quyết định** (Release / Hold / Rework) và lý do một dòng:
+- Lượt gán hoàn tất / được giao: **176/176**, 40 ảnh; theo `submission/qc/assignment.csv`.
+- IAA trước calibration (kèm mẫu số): **1.137 cặp box ghép**, mean IoU **0,8383**, cùng lớp **96,48%**; IoU chưa đạt ngưỡng 0,85, đồng thuận lớp đạt ngưỡng 95%.
+- Số ảnh phải calibration: **40/40**; **3.678** ứng viên, **0/3.678** quyết định có xác nhận.
+- Vòng QC và số ảnh đã duyệt / cả lô: Chưa có vòng hợp lệ; **0/40** ảnh có phiếu QC.
+- Tỉ lệ lỗi: N/A theo ảnh và đối tượng vì chưa duyệt; không dùng 0%.
+- **Quyết định** (Release / Hold / Rework) và lý do một dòng: **Hold** — chưa hoàn tất quyết định calibration, bộ nhãn cuối và vòng QC.
+
+## Bằng chứng đóng góp theo mã
+
+| Mã | Guideline cá nhân | COCO | Ảnh theo phân công | Số annotation |
+|---|---|---|---:|---:|
+| 066 | `submission/guidelines/individual/guideline_066.md` | `submission/labels/066.json` | 16 | 75 |
+| 263 | `submission/guidelines/individual/guideline_263.md` | `submission/labels/263.json` | 40 | 326 |
+| 273 | `submission/guidelines/individual/guideline_273.md` | `submission/labels/273.json` | 40 | 343 |
+| 277 | `submission/guidelines/individual/guideline_277.md` | `submission/labels/277.json` | 40 | 318 |
+| 291 | `submission/guidelines/individual/guideline_291.md` | `submission/labels/291.json` | 40 | 311 |
+
+Các số liệu trên chứng minh sự tồn tại của file nhãn/guideline, không xác nhận từng người đã làm calibration hay review QC.
+
+## Bàn giao
+
+- Đã có: ảnh và ghi công nguồn, guideline các phiên bản, taxonomy, nhãn độc lập, assignment, IAA, ứng viên calibration, consensus nháp.
+- Chưa có: quyết định calibration hoàn chỉnh, nhãn cuối/manifest, vòng QC có phiếu xác nhận, ghi chú cá nhân do các thành viên xác nhận.
+- Đầu mối hiện tại: 291; chưa phân công người review tiếp.
+- Hồ sơ **HOLD** được nộp như bằng chứng đã làm theo `SUBMISSION.md`, không phải dữ liệu Release; `check_submission.py` chưa thể PASS.
