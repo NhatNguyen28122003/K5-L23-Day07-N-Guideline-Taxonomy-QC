@@ -1,6 +1,6 @@
-# Guideline gán nhãn cá nhân — Thuy
+# Guideline gán nhãn cá nhân — 263
 
-- Phiên bản `v0.2-thuy`
+- Phiên bản `v0.2-263`
 - Ngày 16/11/2026
 - Phạm vi 40 ảnh `img_001.jpg` đến `img_040.jpg` trong [CVAT Job 17](http://localhost:8080/tasks/17/jobs/17)
 - Người duyệt: nhóm ở Pha 2
@@ -63,5 +63,5 @@ Rà cả 40 ảnh theo thứ tự. Kiểm tra đối tượng sót, khung trùng
 
 | Phiên bản | Thay đổi | Căn cứ |
 |---|---|---|
-| `v0.2-thuy` | Quy tắc khung phần nhìn thấy, mức che, cắt mép, vật nhỏ và xe ngoài lớp | Rà soát 40 ảnh Job 17 |
+| `v0.2-263` | Quy tắc khung phần nhìn thấy, mức che, cắt mép, vật nhỏ và xe ngoài lớp | Rà soát 40 ảnh Job 17 |
 

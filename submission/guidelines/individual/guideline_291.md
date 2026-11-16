@@ -2,7 +2,7 @@
 
 - **Phiên bản:** v0.1 — đề xuất
 - **Ngày:** 16/11/2026
-- **Mã thành viên:** [mã 3 chữ số]
+- **Mã thành viên:** 291
 - **Công cụ:** CVAT
 - **Loại nhãn:** Bounding Box
 - **Định dạng xuất:** COCO 1.0
