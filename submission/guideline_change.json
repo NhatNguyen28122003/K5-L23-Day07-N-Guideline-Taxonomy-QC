@@ -1,0 +1,10 @@
+{
+  "kind": "semantic",
+  "summary": "v1.0 → v1.1: đổi cách chọn thuộc tính và box sau IAA (cùng occluded_level 47,7 %, cùng truncated 87,1 %, IoU TB 0,838). Thêm R-14 (chọn occluded_level khi phân vân: làm tròn xuống, bảng quy ước người lái/xe), truncated mặc định yes khi box chạm mép ≤ 2 px, R-15 (box person từ đỉnh đầu/mũ đến điểm thấp nhất của cơ thể), R-16 (bắt buộc gán người thật ≥ 20 px), R-17 (box xe khi bị người lái che). R-08 thêm cách vẽ ignore_region (không dùng cho vật ≥ 50 px, một vùng mỗi cụm). R-03 thêm bảng phân lớp car/van/bus/truck/other_vehicle. R-01 thêm kiểm 0 annotation ở 5 ảnh đối chứng img_017/020/027/033/038. Taxonomy giữ v1.0 (không đổi lớp, thuộc tính, ngưỡng). Phạm vi: rà lại cả lô 40 ảnh (pham_vi=lo).",
+  "from_version": "v1.0",
+  "to_version": "v1.1",
+  "taxonomy_changed": false,
+  "rules_added": ["R-14", "R-15", "R-16", "R-17"],
+  "rules_changed": ["R-01", "R-03", "R-08", "truncated"],
+  "evidence": "submission/qc/iaa_summary.md"
+}
