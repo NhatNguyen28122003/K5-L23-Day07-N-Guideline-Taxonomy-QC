@@ -11,9 +11,9 @@
 - Lượt gán hoàn tất / được giao: **176/176**, 40 ảnh; theo `submission/qc/assignment.csv`.
 - IAA trước calibration (kèm mẫu số): **1.137 cặp box ghép**, mean IoU **0,8383**, cùng lớp **96,48%**; IoU chưa đạt ngưỡng 0,85, đồng thuận lớp đạt ngưỡng 95%.
 - Số ảnh phải calibration: **40/40**; **3.678** ứng viên, **0/3.678** quyết định có xác nhận.
-- Vòng QC và số ảnh đã duyệt / cả lô: Chưa có vòng hợp lệ; **0/40** ảnh có phiếu QC.
+- Vòng QC và số ảnh đã duyệt / cả lô: Chưa tạo được phiếu QC; **0/40** ảnh được người kiểm xác nhận.
 - Tỉ lệ lỗi: N/A theo ảnh và đối tượng vì chưa duyệt; không dùng 0%.
-- **Quyết định** (Release / Hold / Rework) và lý do một dòng: **Hold** — chưa hoàn tất quyết định calibration, bộ nhãn cuối và vòng QC.
+- **Quyết định** (Release / Hold / Rework) và lý do một dòng: **Hold** — đã có nhãn máy đề xuất 508 box cho 3678 ca, CHƯA xác nhận người thật hay hoàn tất vòng QC.
 
 ## Bằng chứng đóng góp theo mã
 
@@ -30,6 +30,6 @@ Các số liệu trên chứng minh sự tồn tại của file nhãn/guideline,
 ## Bàn giao
 
 - Đã có: ảnh và ghi công nguồn, guideline các phiên bản, taxonomy, nhãn độc lập, assignment, IAA, ứng viên calibration, consensus nháp.
-- Chưa có: quyết định calibration hoàn chỉnh, nhãn cuối/manifest, vòng QC có phiếu xác nhận, ghi chú cá nhân do các thành viên xác nhận.
+- Có bản labels_calibrated.json + manifest từ máy với trạng thái HOLD_MACHINE_ONLY; còn thiếu quyết định người chốt, QC thực tế, và ghi chú cá nhân tự xác nhận.
 - Đầu mối hiện tại: 291; chưa phân công người review tiếp.
 - Hồ sơ **HOLD** được nộp như bằng chứng đã làm theo `SUBMISSION.md`, không phải dữ liệu Release; `check_submission.py` chưa thể PASS.

@@ -1,0 +1,26 @@
+{
+  "cases_auto_decided": 3678,
+  "cases_by_machine_confidence": {
+    "inferred": 3073,
+    "low": 406,
+    "rule_specific": 199
+  },
+  "images": 40,
+  "coco_boxes_before": 678,
+  "coco_boxes_auto_after": 508,
+  "label_changes": 532,
+  "changes_by_type": {
+    "MEDIAN_BBOX": 298,
+    "TRUNCATED_EDGE_DEFAULT": 48,
+    "OCCLUDED_MAJORITY": 7,
+    "TRUNCATED_INTERIOR": 7,
+    "DROP_BOX_UNDER_MIN_HEIGHT": 5,
+    "DROP_REFERENCE_IMAGE": 44,
+    "CLASS_MAJORITY": 2,
+    "NEAR_IDENTICAL_DEDUP": 121
+  },
+  "guideline": "v1.1",
+  "human_verified": 0,
+  "official_files_modified": 0,
+  "warning": "Every decision is a MACHINE-GENERATED PROPOSAL. No human reviewer or QC evidence is claimed."
+}
