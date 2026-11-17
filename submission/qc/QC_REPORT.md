@@ -1,41 +1,40 @@
-# Báo cáo QC — Day 07 (HOLD, chưa hoàn tất QC)
+# QC_REPORT — Day 07 (HOLD, bản tích hợp máy, CHƯA được người kiểm xác nhận)
 
 ## 1. Mục đích, dữ liệu và phiên bản
+- Mục đích và giới hạn sử dụng: Thực hành gán nhãn 2D trên 40 ảnh; bản v3 là nhãn MÁY ĐỀ XUẤT, không được dùng làm ground truth đã QC.
+- Nguồn và phép sử dụng dữ liệu: Xem data/ATTRIBUTION.csv; không suy luận quyền ngoài thông tin đã ghi.
+- Manifest và checksum nhãn cuối: Có labels_calibrated.json (bản MÁY CHƯA XÁC NHẬN), labels_calibrated.csv và batch_manifest.json; SHA256 COCO=b1a9fd73e7bc3a84b9b91aba5448f943837415a6fcb91fe45d15df2f2c5312b1. Manifest có status=HOLD_MACHINE_ONLY.
+- Guideline và taxonomy khi gán / khi bàn giao: V1.0 cho gán độc lập, guideline v1.1 cho bản đề xuất; taxonomy v1.0, thay đổi semantic cần người kiểm cả lô.
 
-- Mục đích và giới hạn sử dụng: Thực hành xây dựng guideline, gán và so sánh nhãn bounding box trên 40 ảnh đường phố. Chưa đủ bằng chứng phát hành nhãn cuối.
-- Nguồn và phép sử dụng dữ liệu: `data/ATTRIBUTION.csv` lưu tên ảnh, tác giả, giấy phép và nguồn.
-- Manifest và checksum nhãn cuối: **Chưa có** `labels_calibrated.json`, `labels_calibrated.csv`, `batch_manifest.json` hợp lệ. `consensus_draft.json` là bản nháp chưa được kiểm lại; không dùng checksum suy đoán.
-- Guideline và taxonomy khi gán / khi bàn giao: Gán độc lập và IAA theo v1.0. Có tài liệu guideline v1.1 với thay đổi `semantic`, chưa có quyết định và kiểm lại cả lô đầy đủ.
+## 2. Phân công và IAA trước calibration
+- Lượt hoàn thành / được giao: 176/176 lượt trên 40 ảnh, theo assignment.csv và iaa_summary.md.
+- Số cặp box ghép, IoU TB, đồng thuận lớp và mẫu số: 1.137 cặp ghép; IoU trung bình 0,8383 (ngưỡng 0,85), cùng lớp 96,48% (ngưỡng 95%); các cặp chưa ghép không được tính vào mẫu số.
+- Box chưa ghép, loại do ignore, bất đồng vùng ignore: Có cảnh báo ca bỏ sót/thừa và 412 ứng viên bất đồng ignore, xem iaa_summary.md và calibration_candidates.csv.
+- Ca hai người có thể cùng sai sau khi đối chiếu tham chiếu: Chưa có người xác minh ảnh tham chiếu; ưu tiên 5 ảnh đối chứng giả, tượng, đồ chơi theo R-01.
 
-## 2. Phân công và đồng thuận trước calibration
+## 3. Kết quả tích hợp máy
+- Số ca máy đề xuất: 3678/3678; người xác nhận: 0/3678.
+- Mức tin cậy của máy: {'inferred': 3073, 'low': 406, 'rule_specific': 199}. Đây KHÔNG phải tỉ lệ chính xác dự đoán.
+- Bộ COCO máy đề xuất: 678 -> 508 box; số thao tác máy: 532.
+- Loại thay đổi tự động: MEDIAN_BBOX=298, TRUNCATED_EDGE_DEFAULT=48, OCCLUDED_MAJORITY=7, TRUNCATED_INTERIOR=7, DROP_BOX_UNDER_MIN_HEIGHT=5, DROP_REFERENCE_IMAGE=44, CLASS_MAJORITY=2, NEAR_IDENTICAL_DEDUP=121.
+- Ca đã xử lý, rule ID, bản sửa và người xác nhận: Các quyết định CHƯA ĐƯỢC NGƯỜI CHỐT nằm ở auto_machine_decisions.csv; calibration_decisions.csv gốc vẫn chưa được điền đủ. Không mạo nhận số ca đã hiệu chuẩn.
+- Tác động v1.1 lên nhãn và ảnh: 40/40 ảnh thuộc phạm vi semantic; phải kiểm lại việc gộp box gần nhau, người thật bỏ sót, ignore, và occlusion.
+- Tham chiếu bằng chứng khi Rework: auto_machine_changes.csv, auto_machine_report.json và manifest SHA256; vòng QC sau cần dựa trên nhãn được người xác nhận.
 
-- Lượt hoàn thành / được giao: **176/176**, 40 ảnh; mã 066 được giao 16 ảnh, mã 263, 273, 277 và 291 mỗi mã 40 ảnh.
-- Số cặp box ghép, IoU TB, đồng thuận lớp và mẫu số: **1.137** cặp; IoU TB **0,8383** (< 0,85); đồng thuận lớp **96,48%** (>= 95%). Mẫu số chỉ gồm các cặp box ghép được.
-- Box chưa ghép, loại do ignore, bất đồng vùng ignore: **999/1.260** box chưa ghép ở hai phía; **5** box bỏ qua do ignore; **412** ứng viên bất đồng ignore.
-- Ca hai người có thể cùng sai sau khi đối chiếu tham chiếu: Chưa có biên bản đối chiếu tham chiếu coach. Ví dụ cần xem `img_002.jpg` về xe chở xe (R-06) và các ảnh vật mô phỏng (R-01). Người gán giống nhau chưa bảo đảm nhãn đúng.
-
-## 3. Calibration và kiểm lại
-
-- Ca đã xử lý, rule ID, bản sửa và người xác nhận: **0/3.678** ca có quyết định được điền tại `calibration_decisions.csv`; số 3.678 là số ứng viên do script xuất, không phải số quyết định hoàn tất.
-- Tác động v1.1 lên nhãn và ảnh: **40/40** ảnh xuất hiện bất đồng, guideline thay đổi `semantic` nên cần rà lại cả lô. Đề xuất rà thuộc tính occluded/truncated, phân lớp xe, ignore và vật mô phỏng; chưa xác nhận số box đã sửa.
-- Tham chiếu bằng chứng khi Rework: Chưa có vòng QC hợp lệ để kết luận Rework hay Release; hiện HOLD do thiếu bằng chứng.
-
-## 4. Kết quả duyệt
-
-- Vòng QC: Chưa có vòng duyệt hoàn tất (dự kiến vòng 1).
-- Người review và ngày: Chưa có reviewer và ngày duyệt được xác nhận.
-- Đã duyệt / cả lô: **0/40** ảnh có phiếu QC hợp lệ.
-- Ảnh lỗi / ảnh đã duyệt: **N/A (0 ảnh đã duyệt)**, không phải 0%.
-- Annotation đối tượng hiện có bị lỗi / annotation đối tượng đã duyệt: **N/A (0 annotation được QC xác nhận)**, không phải 0%.
-- Vật bỏ sót, ảnh và vùng: Chưa có phiếu QC xác nhận; `bo_sot_thua` là cảnh báo so sánh giữa người gán.
-- Ca khó / phần còn lại, lỗi lặp và ví dụ: **3.678** ứng viên gồm 2.022 bỏ sót/thừa, 663 sai thuộc tính, 442 IoU thấp, 412 bất đồng ignore, 99 cần review, 40 sai lớp. Ví dụ **C296** (`img_004.jpg`) là khác lớp `other_vehicle`/`car` giữa 273|291 dù IoU **0,96**; chưa có quyết định cuối. Xem `IAA_DIAGNOSTICS.md`.
-- Một lỗi máy chặn được và một lỗi cần người đọc ảnh: Script có thể xác thực hình học box, class và thuộc tính theo taxonomy; người kiểm bằng mắt mới xác định được một vật thực sự có bị bỏ sót hay gán thừa. Chưa khẳng định đã kiểm bằng mắt.
+## 4. Duyệt QC
+- Vòng QC: 2
+- Người review và ngày: Chưa có reviewer thực tế; việc tạo phiếu trống không tính là kiểm ảnh.
+- Đã duyệt / cả lô: 0/40 ảnh đã được người kiểm thực tế; chưa tạo được phiếu QC.
+- Ảnh lỗi / ảnh đã duyệt: N/A (0 ảnh được người kiểm thực tế).
+- Annotation đối tượng hiện có bị lỗi / annotation đối tượng đã duyệt: N/A (0 annotation được người kiểm thực tế).
+- Vật bỏ sót, ảnh và vùng: Chưa được kiểm trực quan; không coi bo_sot_thua trong IAA là số lỗi thực tế.
+- Ca khó / phần còn lại, lỗi lặp và ví dụ: Ưu tiên low-confidence và box bị gộp; xem auto_machine_decisions.csv + auto_machine_changes.csv.
+- Một lỗi máy chặn được và một lỗi cần người đọc ảnh: Có thể kiểm kích thước/biên box; chỉ nhìn ảnh thật mới xác định đúng đối tượng và che khuất.
 
 ## 5. Quyết định bàn giao
+- Quyết định: Hold
+- Lý do, người nhận và phạm vi sử dụng: HOLD vì 3678/3678 quyết định chỉ do máy đề xuất, chưa có xác minh người thật và phiếu QC; mã 291 bàn giao bản NHÁP để nhóm kiểm lại, không công bố Release.
+- Nếu còn việc: Nhóm duyệt quyết định calibration, QC 40 ảnh, bổ sung individual_notes từng thành viên; nộp theo SUBMISSION.md kênh riêng tư.
+- Kiểm ngược từ báo cáo tới ảnh, rule và nhãn: Mở submission/qc/auto_machine_decisions.csv (case_id, rule_id, confidence), đối chiếu submission/qc/auto_machine_changes.csv và ảnh data/images; ví dụ 5 ảnh img_017/020/027/033/038 phải có 0 nhãn theo R-01/R-13.
 
-- Quyết định: **Hold**
-- Lý do, người nhận và phạm vi sử dụng: Chưa hoàn tất calibration, nhãn cuối và QC nên không đủ căn cứ Release. Mã **291** đang tổng hợp hồ sơ; chưa phân công reviewer độc lập. Dùng hồ sơ để đánh giá tiến độ lab, không sử dụng như dữ liệu chuẩn đã QC.
-- Nếu còn việc: Chốt người review, xác nhận quyết định theo ảnh và rule, điền calibration, tạo nhãn cuối/manifest, duyệt 40 ảnh nếu phát hành, chạy `qc_report.py` và `check_submission.py`, bổ sung ghi chú cá nhân được người liên quan xác nhận.
-- Kiểm ngược từ báo cáo tới ảnh, rule và nhãn: **C001** trong `calibration_candidates.csv` thuộc `img_001.jpg`, cặp 263|273, lớp person có box `[109,113,89,130]` ở phía 263 nhưng phía 273 không có box tương ứng. C001 chưa được chốt. **C296** là bất đồng lớp `other_vehicle`/`car` với IoU 0,96, đối chiếu R-03 trước khi quyết định.
-
-> Báo cáo này là hồ sơ HOLD do thiếu đầu vào theo `SUBMISSION.md`. Không tự nhận `check_submission.py` đã PASS hoặc đã hoàn tất review QC.
+> LƯU Ý: `qc_report.py` có thể xuất HOLD theo bằng chứng thiếu; việc có manifest/hash hợp lệ KHÔNG chứng minh box đúng thực tế. Không dùng report này để tuyên bố Release.

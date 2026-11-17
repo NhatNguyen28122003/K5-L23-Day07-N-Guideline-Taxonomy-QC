@@ -1,26 +1,30 @@
 {
-  "intended_use": "Thực hành đặc tả và QC nhãn 2D trong Day 07.",
-  "limitations": "Tập ảnh tuyển chọn để luyện ca biên; độ đại diện cho dữ liệu vận hành chưa được đánh giá.",
-  "format": "COCO 1.0 bbox góc trên trái [x, y, w, h] theo pixel",
+  "status": "HOLD_MACHINE_ONLY",
+  "human_verified": false,
+  "intended_use": "Day 07 automatic proposal for group verification, NOT QC-approved training data",
+  "limitations": "Machine heuristic results not human reviewed. Original calibration_decisions.csv is unfilled. Not released.",
+  "format": "COCO 1.0 bbox [x,y,w,h] pixels",
   "taxonomy_version": "v1.0",
-  "taxonomy": "submission/taxonomy.json",
+  "taxonomy": "submission\\taxonomy.json",
   "guideline": "submission/guidelines/guideline_v1.1_calibrated.md",
   "labels": {
     "path": "submission/qc/labels_calibrated.json",
-    "sha256": "f6b83ac7e682b0761d007e16435d38e81ad0251fe78158aadb8bffd055d558b3"
+    "sha256": "b1a9fd73e7bc3a84b9b91aba5448f943837415a6fcb91fe45d15df2f2c5312b1"
   },
   "inputs_sha256": {
-    "submission/qc/assignment.csv": "114c389b32b523b00b9ed40292ec159588345a8986efded6e8940516a5db82ca",
-    "submission/qc/iaa_summary.json": "501d498b1df630489e32402aea3dff0896106436c62c589cac38841af2088c57",
-    "submission/qc/calibration_decisions.csv": "f2915aeff6a0dafee5fec171e6303dcba791d64ac1fd1cc0cbb412eda99a48a3",
-    "submission/qc/calibration_context.json": "5b99f729b97ab54b3a665aa3fdc48fcb7750bcf42f05eb946cc6958dad890b09",
+    "submission/qc/assignment.csv": "6dcdd5c9894a418447b953907c233f1547a7d5f861b5e26b630f4ddf391c2697",
+    "submission/qc/iaa_summary.json": "491c3166cfba68a9a6e1e4efd02c798dee2b0241ff3768014e59dbd197243729",
+    "submission/qc/calibration_decisions.csv": "9ecd73895a7fbe0d0ab69e9d7c2076756c03d50f3fe77e5a0a32ae5e865dbbb7",
+    "submission/qc/calibration_context.json": "b2280e0dbede43f0442756d5ca784855164cdc3f591731c761040ebfd94f338e",
     "submission/guidelines/guideline_v1.1_calibrated.md": "edc7d5fa53bac462e741fdf178f22b0ec598397335fbc03127fde34e891c8b4e",
     "submission/guideline_change.json": "4cbf8f0a0e8f2df2dff120946811af5d7a32d2699161a96ede5bfbe1e23fa1ed",
     "submission/taxonomy.json": "1c216cc983c91c36f4d0b1e1e9ff0536e33698149a1e828bcb507f8d098cb4e3",
     "data/ATTRIBUTION.csv": "c31a270de08f6e2862b84df18a4a05e66dc58526086ec61b258b44cda52b7b2c",
-    "submission/qc/labels_calibrated_b0b052cc569cca3c.json": "51ce2f608df0e4ba423b5bec555aaa430f95f855c898ce885fa552aa1c924d78"
+    "submission/qc/auto_machine_decisions.csv": "343729c6f0f931bf981cf9d60cd17a75a2edde0e80c03b123d74c9f153f093b2",
+    "submission/qc/auto_machine_changes.csv": "c70be0dfbabbbb4fec9c9fceb739455ed8c6ae2bd8853e4056cf7e320ed2a3b7",
+    "submission/qc/auto_machine_report.json": "63675ca96365425d83c2449d3452aea5157a91799b69867ff13c720b10734532"
   },
-  "csv_sha256": "3d167f8a19474d5df294b50d019a0289084c3ad6f9ed9cecdaaaa4edbf9cb637",
+  "csv_sha256": "a231897dd5c2896cefa8700a9d727b06f3bcf0797ef94b69c8be170759c460f8",
   "images": [
     {
       "file": "img_001.jpg",
