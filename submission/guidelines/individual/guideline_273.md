@@ -1,8 +1,8 @@
-# Guideline gán nhãn — v0.1  — 273
+# Guideline gán nhãn — v0.1  — Nhat
 
-- Phiên bản: v0.1-273 ( viết độc lập ở Pha 1)
+- Phiên bản: v0.1-273
 - Ngày: 2026-11-16
-- Người viết: 273 · Người duyệt: (nhóm, Pha 2)
+- Người viết: 273
 > Quy ước đọc: **R-xx** là mã quy tắc để dẫn lại trong nhật ký QC.
 > Cột "Loại ca" ở mục 4: **QT** = đã có quy tắc, gán thẳng; **RV** = tôi đã quyết tạm nhưng **cần reviewer/nhóm chốt**.
 
